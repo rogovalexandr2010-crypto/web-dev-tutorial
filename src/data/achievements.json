@@ -1,0 +1,16 @@
+[
+  {
+    "id": "first-step",
+    "name": "Первый шаг",
+    "description": "Завершите первый урок",
+    "icon": "🎯",
+    "requirement": "completedLessons >= 1"
+  },
+  {
+    "id": "html-master",
+    "name": "Мастер HTML",
+    "description": "Завершите все уроки HTML",
+    "icon": "🏆",
+    "requirement": "completedHtmlLessons === totalHtmlLessons"
+  }
+]
