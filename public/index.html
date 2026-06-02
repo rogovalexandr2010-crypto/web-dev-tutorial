@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WebDev Academy - Learn HTML, CSS, and JavaScript from scratch">
+  <meta name="keywords" content="education, web development, html, css, javascript">
+  <title>WebDev Academy - Изучайте веб-разработку с нуля</title>
+  
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/editor.css">
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body data-theme="light">
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <h1>💻 WebDev Academy</h1>
+      </div>
+      <nav class="nav">
+        <a href="#" class="nav-link active" data-section="home">Главная</a>
+        <a href="#" class="nav-link" data-section="lessons">Уроки</a>
+        <a href="#" class="nav-link" data-section="editor">Редактор</a>
+        <a href="#" class="nav-link" data-section="progress">Прогресс</a>
+      </nav>
+      <div class="header-controls">
+        <button class="theme-toggle" id="themeToggle" title="Переключить тему">🌙</button>
+        <div class="user-profile">
+          <span id="userName">Гость</span>
+          <img src="https://via.placeholder.com/32" alt="Avatar" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Home Section -->
+    <section id="home" class="section active">
+      <div class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <h2>Добро пожаловать на WebDev Academy!</h2>
+            <p>Изучайте HTML, CSS и JavaScript с нуля. Никакого опыта не требуется!</p>
+            <button class="btn btn-primary" onclick="switchSection('lessons')">Начать учиться →</button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <h3>9+</h3>
+              <p>Интерактивных уроков</p>
+            </div>
+            <div class="stat">
+              <h3>15+</h3>
+              <p>Практических задач</p>
+            </div>
+            <div class="stat">
+              <h3>100%</h3>
+              <p>Бесплатно</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="container">
+          <h3>Почему WebDev Academy?</h3>
+          <div class="features-grid">
+            <div class="feature">
+              <div class="feature-icon">📚</div>
+              <h4>Структурированное обучение</h4>
+              <p>От базовых концепций до продвинутых техник</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">💻</div>
+              <h4>Встроенный редактор</h4>
+              <p>Пишите, редактируйте и видите результат мгновенно</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">✅</div>
+              <h4>Практические задачи</h4>
+              <p>Закрепляйте знания с интерактивными упражнениями</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">📊</div>
+              <h4>Отслеживание прогресса</h4>
+              <p>Видите свой прогресс и достигайте целей</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">🎓</div>
+              <h4>Для новичков</h4>
+              <p>Нет предварительных знаний не требуется</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">🚀</div>
+              <h4>Готовьтесь к карьере</h4>
+              <p>Получите реальные навыки веб-разработки</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lessons Section -->
+    <section id="lessons" class="section">
+      <div class="container">
+        <h2>📚 Уроки</h2>
+        
+        <div class="lessons-container">
+          <div class="module-tabs">
+            <button class="tab-btn active" data-module="html">HTML</button>
+            <button class="tab-btn" data-module="css">CSS</button>
+            <button class="tab-btn" data-module="javascript">JavaScript</button>
+          </div>
+
+          <div class="lessons-grid" id="lessonsGrid">
+            <!-- Уроки будут загружены здесь -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lesson Detail -->
+    <section id="lesson-detail" class="section">
+      <div class="container">
+        <button class="btn btn-secondary" onclick="switchSection('lessons')">← Назад к урокам</button>
+        
+        <div class="lesson-content">
+          <div class="lesson-header">
+            <h2 id="lessonTitle"></h2>
+            <div class="lesson-meta">
+              <span id="lessonDuration"></span>
+              <span id="lessonDifficulty"></span>
+            </div>
+          </div>
+
+          <div class="lesson-body">
+            <div class="theory-section">
+              <h3>📖 Теория</h3>
+              <p id="lessonTheory"></p>
+              <div class="code-example">
+                <h4>Пример кода:</h4>
+                <pre><code id="lessonCodeExample"></code></pre>
+              </div>
+              <p id="lessonExplanation"></p>
+              
+              <div class="key-points">
+                <h4>✓ Ключевые точки:</h4>
+                <ul id="keyPointsList"></ul>
+              </div>
+            </div>
+
+            <div class="practice-section">
+              <h3>✏️ Практические задания</h3>
+              <div id="tasksContainer"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editor Section -->
+    <section id="editor" class="section">
+      <div class="container-full">
+        <div class="editor-container">
+          <div class="editor-tabs">
+            <button class="tab-btn active" data-tab="html">HTML</button>
+            <button class="tab-btn" data-tab="css">CSS</button>
+            <button class="tab-btn" data-tab="javascript">JavaScript</button>
+          </div>
+
+          <div class="editor-wrapper">
+            <div class="editor-content">
+              <textarea id="htmlEditor" class="editor-input" placeholder="HTML код..." spellcheck="false"></textarea>
+              <textarea id="cssEditor" class="editor-input" placeholder="CSS код..." style="display: none;" spellcheck="false"></textarea>
+              <textarea id="jsEditor" class="editor-input" placeholder="JavaScript код..." style="display: none;" spellcheck="false"></textarea>
+            </div>
+
+            <div class="preview-container">
+              <div class="preview-header">
+                <h4>📺 Предпросмотр</h4>
+                <button class="btn btn-small" onclick="refreshPreview()">🔄 Обновить</button>
+              </div>
+              <iframe id="preview" class="preview" title="Code preview"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progress Section -->
+    <section id="progress" class="section">
+      <div class="container">
+        <h2>📊 Ваш прогресс</h2>
+        
+        <div class="progress-container">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <h4>Завершённые уроки</h4>
+              <p class="stat-number" id="completedLessonsCount">0</p>
+            </div>
+            <div class="stat-card">
+              <h4>Завершённые задачи</h4>
+              <p class="stat-number" id="completedTasksCount">0</p>
+            </div>
+            <div class="stat-card">
+              <h4>Текущая серия</h4>
+              <p class="stat-number" id="streakCount">0</p>
+              <p class="stat-subtitle">дней</p>
+            </div>
+            <div class="stat-card">
+              <h4>Общий прогресс</h4>
+              <p class="stat-number" id="overallProgress">0</p>
+              <p class="stat-subtitle">%</p>
+            </div>
+          </div>
+
+          <div class="module-progress">
+            <h3>📈 Прогресс по модулям</h3>
+            <div class="progress-item">
+              <div class="progress-label">
+                <span>HTML</span>
+                <span id="htmlProgress">0%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="htmlFill"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label">
+                <span>CSS</span>
+                <span id="cssProgress">0%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="cssFill"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label">
+                <span>JavaScript</span>
+                <span id="jsProgress">0%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="jsFill"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="achievements">
+            <h3>🏆 Достижения</h3>
+            <div class="achievements-grid" id="achievementsGrid"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Task Modal -->
+  <div id="taskModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeTaskModal()">✕</button>
+      <h3 id="taskTitle"></h3>
+      <p id="taskDescription"></p>
+      <div class="task-editor">
+        <textarea id="taskCodeInput" placeholder="Пишите ваш код здесь..." spellcheck="false"></textarea>
+      </div>
+      <div class="task-actions">
+        <button class="btn btn-secondary" onclick="showTaskHints()">💡 Подсказка</button>
+        <button class="btn btn-primary" onclick="submitTask()">✓ Проверить</button>
+      </div>
+      <div id="taskFeedback" class="task-feedback"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 WebDev Academy. Изучайте веб-разработку бесплатно!</p>
+      <div class="footer-links">
+        <a href="#" title="О проекте">О проекте</a>
+        <a href="https://github.com/rogovalexandr2010-crypto/web-dev-tutorial" target="_blank" rel="noopener" title="GitHub">GitHub</a>
+        <a href="#" title="Контакты">Контакты</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/lessons.js"></script>
+  <script src="js/editor.js"></script>
+  <script src="js/progress.js"></script>
+</body>
+</html>
